@@ -1,0 +1,29 @@
+body {
+  background-color: #fbf7e4;
+  font-family: Verdana, Geneva, sans-serif;
+  margin-left: 20px;
+  color: #8e001c;
+}
+table {
+  width: 400px;
+  border-style: groove;
+  border-width: thick;
+  border-color: #ff5c19;
+  color: #c00;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10px;
+}
+caption {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 24px;
+  color: hsl(17, 60%, 40%);
+  padding: 12px;
+}
+td,
+th {
+  height: 50px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #000;
+  padding: 20px;
+}
