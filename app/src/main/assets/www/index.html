@@ -40,15 +40,21 @@
 </head>
 
 <body>
-    <div class="app">
-        <h1>Apache Cordova 888</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-    </div>
+    <form name="f">
+        <p align="center">
+            Коэффициенты уравнения <br>
+            A: <Br>
+            <input type="text" name="a"><Br>
+            B:<Br>
+            <input type="text" name="b"><Br>
+            C:<Br>
+            <input type="text" name="c"><Br>
+            <button id="btn">Решить</button>
+        </p>
+    </form>
     <script src="cordova.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/calc.js"></script>
 </body>
 
 </html>
