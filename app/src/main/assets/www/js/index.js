@@ -1,29 +1,33 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+document.getElementById("draw")?.addEventListener("click", draw);
+document.getElementById("swap-btn")?.addEventListener("click", swap);
 
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-document.addEventListener('deviceready', onDeviceReady, false);
 
-function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+function draw() {
+  CanvasMaster = new Object();
+  CanvasMaster.showCanvas = function () {
+    canvasNow = document.getElementById("sunset");
+    contextNow = canvasNow.getContext("2d");
+    sunsetGradient = contextNow.createLinearGradient(0, 0, 0, 379);
+    sunsetGradient.addColorStop(0, "yellow");
+    sunsetGradient.addColorStop(1, "#cc0000");
+    contextNow.fillStyle = sunsetGradient;
+    contextNow.beginPath();
+    contextNow.arc(100, 100, 75, 0, Math.PI * 2, false);
+    contextNow.closePath();
+    contextNow.fill();
+  };
+  CanvasMaster.showCanvas();
+}
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+
+function swap() {
+    let img1 = document.getElementById('img1');
+    let img2 = document.getElementById('img2');
+
+    [img1.src, img2.src] = [img2.src, img1.src]
+
+    let cap1 = document.getElementById('cap1');
+    let cap2 = document.getElementById('cap2');
+
+    [cap1.innerHTML, cap2.innerHTML] = [cap2.innerHTML, cap1.innerHTML]
 }
