@@ -6,52 +6,56 @@
 <head runat="server">
     <title></title>
     <style type="text/css">
-    .text {
-        width:100%;
-        font-family:Garamond;
-        text-align:center;
-        font-size:xx-large;
-    }
-    .main {
-        top: 50%;
-        left: 50%;
-        width: 800px;
-        height: 500px;
-        position: absolute;
-        margin-top: -250px;
-        margin-left: -400px;
-    }
-    .tb {
-        width:60%;
-        margin-left:20%;
-        height: 40px;
-	 font-size:xx-large;
-    }
-    .button {
-        width:40%;
-        margin-left:30%;
-        font-size:xx-large;
-    }
-    .lbl {
-        margin-left:30%;
-        font-size:xx-large;
-    }
-</style>
-
+        .text {
+            font-size: xx-large;
+        }
+    </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <h1 class="text">Расчет степени</h1>
-        <p class="text">Введите число</p>
-        <asp:TextBox ID="tbNumb" runat="server" CssClass="tb"></asp:TextBox>
+    <h1>База данных магазина</h1>
+    <p style="height: 25px" class="text"><strong>Форма ввода изменений в магазине</strong></p>
+    <form id="form2" runat="server" style="font-size: xx-large">
+        <table style="width: 50%; height: 162px;">
+            <tr>
+                <td class="text"><strong>Продукт</strong></td>
+                <td>
+                    <asp:TextBox ID="tbProduct" runat="server" Width="100%"
+                        Font-Bold="True" Font-Size="X-Large"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="text"><strong>Количество</strong></td>
+                <td>
+                    <asp:TextBox ID="tbQuantity" runat="server" Width="100%"
+                        Font-Bold="True" Font-Size="X-Large"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="text"><strong>Цена</strong></td>
+                <td>
+                    <asp:TextBox ID="tbPrice" runat="server" Width="100%" Font-Bold="True"
+                        Font-Size="X-Large"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+        <asp:Button ID="btnInsert" runat="server" Font-Bold="True"
+            Font-Size="X-Large" Height="49px" Text="Добавить" Width="15%" OnClick="btnInsert_Click" />
+        <asp:Button ID="btnUpdate" runat="server" Font-Bold="True"
+            Font-Size="X-Large" Height="49px" Text="Изменить" Width="15%" OnClick="btnUpdate_Click" />
+        <asp:Button ID="btnDelete" runat="server" Font-Bold="True"
+            Font-Size="X-Large" Height="49px" Text="Удалить" Width="15%" OnClick="btnDelete_Click"/>
         <br />
-        <p class="text">Введите степень</p>
-        <asp:TextBox ID="tbPower" runat="server" CssClass="tb"></asp:TextBox>
         <br />
-        <asp:Button ID="btnCalc" runat="server" Text="Расчет" CssClass="button" OnClick="btnCalc_Click"/>
-        <br />
-        <asp:Label ID="lblResult" runat="server" Text="" CssClass="lbl"></asp:Label>
-        <br />
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Store]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM STORE"></asp:SqlDataSource>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+            <Columns>
+                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
+                <asp:BoundField DataField="Product" HeaderText="Product" SortExpression="Product" />
+                <asp:BoundField DataField="Count" HeaderText="Count" SortExpression="Count" />
+                <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
+            </Columns>
+        </asp:GridView>
     </form>
 </body>
 </html>
